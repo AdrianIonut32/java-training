@@ -24,6 +24,12 @@ public class ChessBoardTest extends TestCase {
         assertEquals(7, ChessBoard.MAX_BOARD_HEIGHT);
     }
 
+    //test adaugat pt verificarea MaxHeight si MaxWidth
+    @Test
+    public void test_CheckBoard(){
+        assertEquals(true,testSubject.checkBoard(ChessBoard.MAX_BOARD_HEIGHT,ChessBoard.MAX_BOARD_WIDTH));
+    }
+
     @Test
     public void testIsLegalBoardPosition_True_X_equals_0_Y_equals_0() {
         boolean isValidPosition = testSubject.IsLegalBoardPosition(0, 0);

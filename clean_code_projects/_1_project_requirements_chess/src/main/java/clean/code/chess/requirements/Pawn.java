@@ -43,8 +43,19 @@ public class Pawn {
         pieceColor = value;
     }
 
-    public void Move(MovementType movementType, int newX, int newY) {
-        throw new UnsupportedOperationException("Need to implement Pawn.Move()") ;
+    public void Move(MovementType movementType, int newX, int newY){
+        if(movementType.MOVE==movementType){
+            if(pieceColor.equals(PieceColor.BLACK)){
+                if((this.yCoordinate>newY) && (this.yCoordinate-newY==+1)){
+                    this.yCoordinate=newY;
+                }
+                else if(pieceColor.equals(PieceColor.WHITE)) {
+                    if ((this.yCoordinate < newY) && (this.yCoordinate - newY == -1)) {
+                        this.yCoordinate = newY;
+                    }
+                }
+            }
+        }
     }
 
     @Override
