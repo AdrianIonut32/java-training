@@ -18,18 +18,31 @@ public class ChessBoard {
             return false;
     }
 
+    public boolean isNotDuplicate(int xCoordinate,int yCoordinate){
+        try {
+            if(pieces[xCoordinate][yCoordinate]==null){
+                return true;
+            }
+            else{return false;}
+        } catch(ArrayIndexOutOfBoundsException e){
+            return false;
+        }
+    }
+
     public void Add(Pawn pawn, int xCoordinate, int yCoordinate, PieceColor pieceColor) {
         if(xCoordinate<7 && yCoordinate<7 && pawn.getPieceColor().equals(pieceColor)) {
-            pawn.setXCoordinate(xCoordinate);
-            pawn.setYCoordinate(yCoordinate);
-            pawn.setChessBoard(this);
-            pieces[xCoordinate][yCoordinate]=pawn;
+            if (isNotDuplicate(xCoordinate, yCoordinate)) {
+                pawn.setXCoordinate(xCoordinate);
+                pawn.setYCoordinate(yCoordinate);
+                pawn.setChessBoard(this);
+                pieces[xCoordinate][yCoordinate] = pawn;
+            }
         }
-        else{
-            pawn.setXCoordinate(-1);
-            pawn.setYCoordinate(-1);
-            pawn.setChessBoard(this);
-        }
+            else{
+                pawn.setXCoordinate(-1);
+                pawn.setYCoordinate(-1);
+                pawn.setChessBoard(this);
+            }
     }
 
     public boolean IsLegalBoardPosition(int xCoordinate, int yCoordinate) {
